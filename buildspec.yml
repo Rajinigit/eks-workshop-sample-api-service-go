@@ -28,7 +28,7 @@ phases:
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - aws eks update-kubeconfig --name ekscicd-cluster
       - echo $AWS_ACCESS_KEY_ID , $AWS_SECRET_ACCESS_KEY, $AWS_SESSION_TOKEN, $AWS_EXPIRATION , $CREDENTIALS
-      - kubectl apply -f hello-k8s.yml
+      - kubectl apply -f deploy.yml
       - printf '[{"name":"hello-k8s","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files: build.json
